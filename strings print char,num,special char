@@ -1,0 +1,23 @@
+s=str(input("enter the string"))
+alph=0
+num=0
+space=0
+special=0
+a=[]
+b=[]
+sp=[]
+for i in range(len(s)):
+    if(s[i].isalpha()):
+         alph=alph+1
+         a.append(s[i])
+    elif(s[i].isdigit()):
+        num=num+1
+        b.append(s[i])
+    elif(s[i].isspace()):
+        space=space+1
+    else:
+        special=special+1
+        sp.append(s[i])
+print('alphabet=',alph,',',a)
+print('numbers=',num,',',b)
+print('special=',special,',',sp)
