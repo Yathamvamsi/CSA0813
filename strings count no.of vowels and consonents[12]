@@ -1,0 +1,16 @@
+string=str(input('enter the string'))
+vcount=0
+ccount=0
+vowels='AaEeIiOoUu'
+v=[]
+c=[]
+for i in range(0,len(string)):
+    if(string[i] in vowels):
+        vcount=vcount+1
+        v.append(string[i])
+    else:
+        ccount=ccount+1
+        c.append(string[i])
+print('number of vowels and consonents in string')
+print(vcount,v)
+print(ccount,c)
