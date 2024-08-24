@@ -1,0 +1,65 @@
+class Employee:
+    def __init__(self, name, age, position):
+        self.name = name
+        self.age = age
+        self.position = position
+    def display_info(self):
+        """Display the employee's information."""
+        print(f"Name: {self.name}")
+        print(f"Age: {self.age}")
+        print(f"Position: {self.position}")
+        print("-" * 30)  # Separator for clarity
+class EmployeeManagementSystem:
+    def __init__(self):
+        self.employees = []
+    def add_employee(self, employee):
+        """Add an employee to the system."""
+        self.employees.append(employee)
+        print(f"Employee {employee.name} added successfully.")
+
+    def remove_employee(self, name):
+        """Remove an employee from the system by name."""
+        employee_to_remove = next((emp for emp in self.employees if emp.name == name), None)
+        if employee_to_remove:
+            self.employees.remove(employee_to_remove)
+            print(f"Employee {name} removed successfully.")
+        else:
+            print(f"Employee {name} not found.")
+    def display_employees(self):
+        """Display all employees in the system."""
+        if not self.employees:
+            print("No employees found.")
+        else:
+            for employee in self.employees:
+                employee.display_info()
+def menu():
+    ems = EmployeeManagementSystem()
+    while True:
+        print("\nEmployee Management System")
+        print("1. Add Employee")
+        print("2. Remove Employee")
+        print("3. Display Employees")
+        print("4. Exit")
+        choice = input("Enter your choice: ")
+        if choice == '1':
+            name = input("Enter Employee Name: ")
+            age = input("Enter Employee Age: ")
+            position = input("Enter Employee Position: ")
+            try:
+                age = int(age)
+                employee = Employee(name, age, position)
+                ems.add_employee(employee)
+            except ValueError:
+                print("Invalid age. Please enter a number.")
+        elif choice == '2':
+            name = input("Enter Employee Name to Remove: ")
+            ems.remove_employee(name)
+        elif choice == '3':
+            ems.display_employees()
+        elif choice == '4':
+            print("Exiting the program. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number between 1 and 4.")
+if __name__ == "__main__":
+    menu()
